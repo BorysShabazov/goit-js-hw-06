@@ -22,7 +22,10 @@ function createBoxes() {
   for (let i = 0; i < children.length; i += 1) {
     children[i].style.height = `${30 + i * 10}px`;
     children[i].style.width = `${30 + i * 10}px`;
-    children[i].style.backgroundColor = getRandomHexColor();
+
+    if (!children[i].style.backgroundColor) {
+      children[i].style.backgroundColor = getRandomHexColor();
+    }
   }
 
   controlsEl.children[0].value = '';
