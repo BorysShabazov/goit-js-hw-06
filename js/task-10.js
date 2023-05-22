@@ -8,17 +8,28 @@ const boxesEl = document.querySelector('#boxes');
 const controlsEl = document.querySelector('#controls');
 
 function createBoxes() {
+  if (!controlsEl.children[0].value) {
+    return;
+  }
+
   const amount = controlsEl.children[0].value;
   for (let i = 0; i < amount; i += 1) {
     boxesEl.insertAdjacentHTML('beforeend', `<div></div>`);
   }
-  console.log(boxesEl.children);
+
   const children = [...boxesEl.children];
-  children.map(el => (el.style.height = '30px')((el.style.width = '30px')));
-  console.log(children);
+
+  for (let i = 0; i < children.length; i += 1) {
+    children[i].style.height = `${30 + i * 10}px`;
+    children[i].style.width = `${30 + i * 10}px`;
+    children[i].style.backgroundColor = getRandomHexColor();
+  }
+
+  controlsEl.children[0].value = '';
 }
 
 function deleteBoxes() {
+  controlsEl.children[0].value = '';
   boxesEl.innerHTML = '';
 }
 
