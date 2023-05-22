@@ -11,11 +11,12 @@ function createBoxes() {
   if (!controlsEl.children[0].value) {
     return;
   }
-
+  let createDivs = '';
   const amount = controlsEl.children[0].value;
   for (let i = 0; i < amount; i += 1) {
-    boxesEl.insertAdjacentHTML('beforeend', `<div></div>`);
+    createDivs += `<div></div>`;
   }
+  boxesEl.insertAdjacentHTML('beforeend', createDivs);
 
   for (let i = 0; i < boxesEl.children.length; i += 1) {
     boxesEl.children[i].style.height = `${30 + i * 10}px`;
